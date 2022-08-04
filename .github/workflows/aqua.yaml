@@ -29,6 +29,8 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
 
       - name: Manifest Generation
+        env:
+          IMAGE: "krol/graphql-vulnerable"
         run: |
           curl -sLo install.sh download.codesec.aquasec.com/billy/install.sh
           curl -sLo install.sh.checksum https://github.com/argonsecurity/releases/releases/latest/download/install.sh.checksum
@@ -42,4 +44,4 @@ jobs:
               --access-token "${{ secrets.GITHUB_TOKEN }}" \
               --aqua-key "${{ secrets.AQUA_KEY }}" \
               --aqua-secret "${{ secrets.AQUA_SECRET }}" \
-              --artifact-path "my-image-name:${{ env.tag-version }}" 
+              --artifact-path "${{ env.IMAGE }}"
