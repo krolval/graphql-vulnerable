@@ -141,3 +141,5 @@ cython_debug/
 dvga.db
 tools/
 
+db/
+fanal/
